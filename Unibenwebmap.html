@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Map | University of Benin</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.0/leaflet.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+  <link rel="stylesheet" href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css">
+  <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="loader" class="loader-overlay">
+    <div class="loader-content">
+      <div class="spinner"></div>
+      <p>Loading Campus Map...</p>
+    </div>
+  </div>
+
+  <button class="mobile-menu-toggle d-md-none" id="mobileMenuToggle">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h1><i class="fas fa-map-marked-alt"></i> Campus Map</h1>
+      <p class="tagline">Find your way around UNIBEN campus easily</p>
+    </div>
+
+    <div class="campus-select-section mb-3">
+      <label for="campusSelect" class="text-light">Select Campus:</label>
+      <select id="campusSelect" class="form-control" onchange="changeCampus()">
+        <option value="Ugbowo">Ugbowo Main Campus</option>
+        <option value="Ekenwan">Ekenwan Campus</option>
+      </select>
+    </div>
+
+    <div class="search-section">
+      <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search for buildings, hostels, faculties..." autocomplete="on">
+        <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <div class="quick-buttons">
+      <button class="quick-btn hostels-btn" onclick="focusCategory('hostels')">
+        <i class="fas fa-bed"></i><span>Hostels</span>
+      </button>
+      <button class="quick-btn faculties-btn" onclick="focusCategory('faculties')">
+        <i class="fas fa-graduation-cap"></i><span>Faculties</span>
+      </button>
+      <button class="quick-btn cafeterias-btn" onclick="focusCategory('cafeterias')">
+        <i class="fas fa-utensils"></i><span>Cafeterias</span>
+      </button>
+      <button class="quick-btn locate-btn" onclick="locateUser()">
+        <i class="fas fa-location-arrow"></i><span>Locate Me</span>
+      </button>
+    </div>
+
+    <div class="theme-toggle">
+      <label class="toggle-switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="toggle-slider"></span>
+        <span class="toggle-label"><i class="fas fa-moon"></i> Dark Mode</span>
+      </label>
+    </div>
+
+    <div class="logo-section">
+      <div class="logo-container">
+        <img src="images/uniben.jpg" alt="University of Benin Logo" class="logo-img">
+        <div class="logo-text">
+          <h4>University of Benin</h4>
+          <p>Knowledge for Service</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="mapContainer" class="map-container">
+    <div id="map" class="map"></div>
+    <div class="map-controls">
+      <button class="map-control-btn" id="fullscreenBtn" title="Toggle Fullscreen"><i class="fas fa-expand"></i></button>
+      <button class="map-control-btn" id="clearRouteBtn" title="Clear Route"><i class="fas fa-route"></i></button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.0/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+  <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
+  <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
